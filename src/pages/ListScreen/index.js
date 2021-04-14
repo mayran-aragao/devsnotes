@@ -8,18 +8,22 @@ import  {
     Container,
     AddButton,
     AddButtonImage,
-    NotesList
+    NotesList,
+    NoNotes,
+    NoNotesImage,
+    NoNotesText
 } from './styles';
 
 export default () => {
     const navigation = useNavigation();
     const list = useSelector(state=> state.notes.list);
+   //const list=[];
 
     useLayoutEffect(() =>{
         navigation.setOptions({
             title:'Suas Notas',
             headerRight: () => (
-                <AddButton underlayColor="transparent" onPress={()=>navigation.navigate('EditNote')}>
+                <AddButton underlayColor="transparent" activeOpacity={1} onPress={()=>navigation.navigate('EditNote')}>
                     <AddButtonImage source={require('../../assets/more.png')}/>
                 </AddButton>
             )
@@ -27,22 +31,35 @@ export default () => {
     },[]);
 
     const handleNotePress = (index) =>{
-        alert("CLicou em:" + index);
+        navigation.navigate('EditNote',{
+            key:index
+        });
     }
 
     return(
         <Container>
-            <NotesList
-                data={list}
-                renderItem={({item,index})=>(
-                    <NoteItem
-                        data={item}
-                        index={index}
-                        onPress={handleNotePress}
-                    />
-                )}
-                keyExtractor={(item,index)=>index.toString()}
-            />
+            
+            {list.length > 0 &&
+                <NotesList
+                    data={list}
+                    renderItem={({item,index})=>(
+                        <NoteItem
+                            data={item}
+                            index={index}
+                            onPress={handleNotePress}
+                        />
+                    )}
+                    keyExtractor={(item,index)=>index.toString()}
+                />
+            }
+            {list.length == 0 &&
+                <NoNotes>
+                    <NoNotesImage source={require('../../assets/note.png')} />
+                    <NoNotesText>Nenhuma anotação</NoNotesText>
+                </NoNotes>
+            
+            }
+            
         </Container>
     );
 }
