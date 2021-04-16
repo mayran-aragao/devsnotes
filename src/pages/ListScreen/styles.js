@@ -3,18 +3,19 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
     flex:1;
     background-color: #DDD;
-    justify-content:center;
+    justify-content:flex-end;
     align-items:center;
 `;
 
 export const AddButton = styled.TouchableHighlight`
-    margin-right:15px;
-    width:40px;
-    height:40px;
-    border-radius:20px;
+    margin:15px;
+    width:80px;
+    height:80px;
+    border-radius:40px;
     background-color: #98FB98;
     justify-content:center;
     align-items:center;
+    align-self:flex-end;
 `;
 
 export const AddButtonImage = styled.Image`
@@ -28,9 +29,8 @@ export const NotesList = styled.FlatList`
 `;
 
 export const NoNotes = styled.View`
+    margin-bottom:260px;
     align-items:center;
-   
-    
 `;
 export const NoNotesImage = styled.Image`
     width:50px;

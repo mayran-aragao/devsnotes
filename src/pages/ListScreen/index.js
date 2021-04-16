@@ -17,16 +17,16 @@ import  {
 export default () => {
     const navigation = useNavigation();
     const list = useSelector(state=> state.notes.list);
-   //const list=[];
+    //const list=[];
 
     useLayoutEffect(() =>{
         navigation.setOptions({
             title:'Suas Notas',
-            headerRight: () => (
+           /* headerRight: () => (
                 <AddButton underlayColor="transparent" activeOpacity={1} onPress={()=>navigation.navigate('EditNote')}>
                     <AddButtonImage source={require('../../assets/more.png')}/>
                 </AddButton>
-            )
+            )*/
         });
     },[]);
 
@@ -59,6 +59,9 @@ export default () => {
                 </NoNotes>
             
             }
+            <AddButton  underlayColor="#8FBC8F" activeOpacity={0.85} onPress={()=>navigation.navigate('EditNote')}>
+                <AddButtonImage source={require('../../assets/more.png')}/>
+            </AddButton>
             
         </Container>
     );
