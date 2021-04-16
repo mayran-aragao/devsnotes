@@ -17,6 +17,8 @@ export const AddButton = styled.TouchableHighlight`
     align-items:center;
     align-self:flex-end;
     position:absolute;
+    right:15px;
+    bottom:15px;
 `;
 
 export const AddButtonImage = styled.Image`
@@ -30,7 +32,7 @@ export const NotesList = styled.FlatList`
 `;
 
 export const NoNotes = styled.View`
-    margin-bottom:260px;
+    margin-bottom:100%;
     align-items:center;
 `;
 export const NoNotesImage = styled.Image`

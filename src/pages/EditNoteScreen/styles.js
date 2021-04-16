@@ -47,6 +47,8 @@ export const DeleteButton = styled.TouchableHighlight`
     align-items:center;
     align-self:flex-end;
     position:absolute;
+    right:15px;
+    bottom:15px;
 `;
 export const DeleteButtonImage = styled.Image`
     width:27px;
