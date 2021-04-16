@@ -1,21 +1,22 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex:1;
     background-color: #DDD;
     justify-content:flex-end;
     align-items:center;
+    
 `;
 
 export const AddButton = styled.TouchableHighlight`
-    margin:15px;
-    width:80px;
-    height:80px;
-    border-radius:40px;
+    width:70px;
+    height:70px;
+    border-radius:35px;
     background-color: #98FB98;
     justify-content:center;
     align-items:center;
     align-self:flex-end;
+    position:absolute;
 `;
 
 export const AddButtonImage = styled.Image`

@@ -10,7 +10,9 @@ import  {
     SaveButton,
     SaveButtonImage,
     CloseButton,
-    CloseButtonImage
+    CloseButtonImage,
+    DeleteButton,
+    DeleteButtonImage
 } from './styles';
 
 export default () => {
@@ -40,12 +42,12 @@ export default () => {
             title: status == 'new' ? 'Nova Anotação' : 'Editar Anotação',
             
             headerRight: () =>(
-                <SaveButton underlayColor="#DDD" activeOpacity={0.2} onPress={hanadleSaveButton}>
+                <SaveButton underlayColor="#DDD" activeOpacity={0.2} onPress={handleSaveButton}>
                     <SaveButtonImage source={require('../../assets/check.png')}/>
                 </SaveButton>
             ),
             headerLeft: ()=> (
-                <CloseButton underlayColor="#DDD" activeOpacity={0.2} onPress={hanadleSaveButton}>
+                <CloseButton underlayColor="#DDD" activeOpacity={0.2} onPress={handleCloseButton}>
                     <CloseButtonImage source={require('../../assets/cancel.png')}/>
                 </CloseButton>
             )
@@ -53,8 +55,41 @@ export default () => {
 
     },[status,title, body]);
 
-    const hanadleSaveButton = ()=> {
+    const handleSaveButton = ()=> {
+        if (title != '' || body != ''){
+            if(status == 'edit') {
+                dispatch({
+                    type: 'EDIT_NOTE',
+                    payload:{
+                        key:route.params.key,
+                        title,
+                        body
+                    }
+                });
+            }else{
+                dispatch({
+                    type: 'ADD_NOTE',
+                    payload:{title,body}
+                });
+            }
+            navigation.goBack();    
+        }else {
+            alert("Preencha Algum campo")
+        }
+    }
 
+    const handleCloseButton = () => {
+        navigation.goBack();
+    }
+
+    const handleDeleteNote = () => {
+        dispatch({
+            type:'DEL_NOTE',
+            payload:{
+                key: route.params.key
+            }
+        });
+        navigation.goBack();
     }
     
 
@@ -65,14 +100,20 @@ export default () => {
                 onChangeText={t=>setTitle(t)}
                 placeholder="Title"
                 placeholderTextColor="#999"
-                autoFocus={true}
+                
             />
             <BodyInput
                 value={body}
+                autoFocus={true}
                 onChangeText={t=>setBody(t)}
                 multiline={true} 
                 textAlignVertical="top"
-                />
+            />
+            {status =='edit' &&
+                <DeleteButton underlayColor="#FF2222" onPress={handleDeleteNote}>
+                    <DeleteButtonImage source={require('../../assets/delete.png')}/>
+                </DeleteButton>
+            }
         </Container>
     );
 }

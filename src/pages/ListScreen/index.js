@@ -35,18 +35,20 @@ export default () => {
             key:index
         });
     }
-
+    
     return(
         <Container>
             
             {list.length > 0 &&
                 <NotesList
                     data={list}
+                    numColumns={2}
                     renderItem={({item,index})=>(
                         <NoteItem
                             data={item}
                             index={index}
                             onPress={handleNotePress}
+                            
                         />
                     )}
                     keyExtractor={(item,index)=>index.toString()}

@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
     flex:1;
     background-color:#DDD;
+    justify-content:flex-end;
 `;
 
 export const TitleInput = styled.TextInput`
@@ -15,7 +16,7 @@ export const TitleInput = styled.TextInput`
 export const BodyInput = styled.TextInput`
     flex:1;
     padding:15px;
-    font-size:15px;
+    font-size:17px;
     color:#000;
 `;
 export const SaveButton = styled.TouchableHighlight`
@@ -34,6 +35,20 @@ export const CloseButton = styled.TouchableHighlight`
     align-items:center;
 `;
 export const CloseButtonImage = styled.Image`
+    width:27px;
+    height:27px;
+`;
+export const DeleteButton = styled.TouchableHighlight`
+    width:70px;
+    height:70px;
+    border-radius:35px;
+    background-color: #FF4444;
+    justify-content:center;
+    align-items:center;
+    align-self:flex-end;
+    position:absolute;
+`;
+export const DeleteButtonImage = styled.Image`
     width:27px;
     height:27px;
 `;
