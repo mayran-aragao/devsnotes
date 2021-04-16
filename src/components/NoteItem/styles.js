@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Box = styled.TouchableOpacity`
     padding:15px;
     margin:15px;
-    width:38%;
+    width:42%;
     height:200px;
     border-style:solid;
     border-radius: 10px;
